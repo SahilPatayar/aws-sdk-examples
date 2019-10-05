@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+}
+
+group 'org.learn.aws'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 12
+
+dependencyManagement {
+
+    imports {
+        mavenBom 'software.amazon.awssdk:bom:2.9.9'
+        mavenBom 'org.apache.logging.log4j:log4j-bom:2.12.1'
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'software.amazon.awssdk:s3'
+    implementation 'org.apache.logging.log4j:log4j-api'
+    implementation 'org.apache.logging.log4j:log4j-core'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+//test {
+//    useJUnitPlatform()
+//}
